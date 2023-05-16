@@ -14,10 +14,27 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Para saber mais estrutura switch, leia: https://www.php.net/manual/pt_BR/control-structures.switch.php
 switch ($url) 
 {
+    case '/exportar':
+        $return_var = NULL;
+        $output = NULL;
+        $command = 'C:/"Program Files"/MySQL/"MySQL Server 8.0"/bin/mysqldump -uroot -petecjau -P3307 -hlocalhost db_bancodigital > C:/Dev/file.sql';
+        exec($command, $output, $exit_code);
+
+        var_dump($exit_code);
+
+        /*$h=fopen("C:/Dev/file.sql", "w+");
+        fputs($h, $output);
+        fclose($h);*/
+
+        echo "deu certo.";
+    break;
+
+
+
     /**
      * Método: POST
-     * URL: https://bancodigital.tiago.blog.br/cliente/salvar
-     * URL Local: http://0.0.0.0:8000/cliente/salvar
+     * URL: https://bancodigital.tiago.blog.br/correntista/salvar
+     * URL Local: http://0.0.0.0:8000/correntista/salvar
      */
     case '/correntista/salvar':
         CorrentistaController::salvar();
@@ -25,8 +42,8 @@ switch ($url)
 
     /**
      * Método: POST
-     * URL: https://bancodigital.tiago.blog.br/cliente/entrar
-     * URL Local: http://0.0.0.0:8000/cliente/salvar
+     * URL: https://bancodigital.tiago.blog.br/correntista/entrar
+     * URL Local: http://0.0.0.0:8000/correntista/salvar
      */
     case '/correntista/login':
         CorrentistaController::login();

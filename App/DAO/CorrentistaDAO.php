@@ -44,7 +44,7 @@ class CorrentistaDAO extends DAO
         $sql = "INSERT INTO correntista
                             (nome, email, cpf, data_nascimento, senha) 
                 VALUES 
-                            (?, ?, ?, ?, ?) ";
+                            (?, ?, ?, ?, sha1(?) ) ";
 
         // Declaração da variável stmt que conterá a montagem da consulta. Observe que
         // estamos acessando o método prepare dentro da propriedade que guarda a conexão
