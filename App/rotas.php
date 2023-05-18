@@ -45,7 +45,7 @@ switch ($url)
      * URL: https://bancodigital.tiago.blog.br/correntista/entrar
      * URL Local: http://0.0.0.0:8000/correntista/salvar
      */
-    case '/correntista/login':
+    case '/correntista/entrar':
         CorrentistaController::login();
     break;
 
