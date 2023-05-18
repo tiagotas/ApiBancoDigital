@@ -1,3 +1,0 @@
-host: api.metoda.com.br
-user: alunos@api.metoda.com.br
-pass: jau@2022
