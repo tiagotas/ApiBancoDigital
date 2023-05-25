@@ -45,7 +45,7 @@ class CorrentistaController extends Controller
                 $model->$prop_letra_minuscula = $value;
             }
 
-            parent::setResponseAsJSON($model->save()); 
+            parent::getResponseAsJSON($model->save()); 
 
         } catch(Exception $e) {
             
