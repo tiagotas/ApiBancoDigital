@@ -6,14 +6,13 @@
 4) Sim, a inicialização é diferente, aqui estamos usando um Wild Card que possibilia o Servidor Interno do PHP a ser acessado a partir de outros hosts (o emaulador é um host a parte do computador hospedeiro)
 5) Deixe o Terminal aberto para acompanhar o log de saída e ver requisições bem sucedidas (status code 200)
 
-No App em Xamarin/Maui altere o local de conexão para:
-6) Altere na data service para:
-   http://10.0.2.2:8000/rota_desejada
-   
-4) Repositório do Aplicativo: https://github.com/tiagotas/AppBancoDigital
+  
 
-5) Confgure seu App Android para requisições inseguras
-   (sem https) no arquivo AndroidManifest.xml:
+## CONFIGURAÇÕES QUE DEVEM SER FEITAS NO APP (XAMARIN/MAUI)
+
+6) Repositório do Aplicativo: https://github.com/tiagotas/AppBancoDigital
+7) Altere na DataService para: http://10.0.2.2:8000/rota_desejada
+8) Confgure seu App Android para requisições inseguras (sem https) no arquivo AndroidManifest.xml:
 
    `<application  android:usesCleartextTraffic="true" ... />`
    
