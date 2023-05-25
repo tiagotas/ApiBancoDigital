@@ -3,7 +3,6 @@
 namespace App\DAO;
 
 use App\Model\CorrentistaModel;
-use PDO;
 
 /**
  * As classes DAO (Data Access Object) são responsáveis por executar os
@@ -94,20 +93,20 @@ class CorrentistaDAO extends DAO
         $stmt->bindValue(2, $senha);
         $stmt->execute();
 
-        return $stmt->fetchObject("App\Model\CorrentistaModel"); // Retornando um objeto específico PessoaModel
+        /**
+         * Aqui estamos organizando os dados vindos do banco como um Model CorrentistaModel
+         * mas se a query não tiver nenhum resultado fetchObject retorna um bool false e portanto,
+         * neste caso fetchObject pode retornar um objeto ou um bool.
+         */
+        $obj = $stmt->fetchObject("App\Model\CorrentistaModel");
+
+        /**
+         * Aqui verificamos se o retorno do banco foi um objeto do tipo model
+         * (portando o usuário colocou CPF e Senha corretos e um resultado foi encontrado) ou
+         * um bool false, que indica que nenhum resultado foi encontrado.
+         * Se for um bool, nós iremos retornar um model Vazio (por padrão as propriedades são null)
+         * e iremos verificar no App se a propriedade Id é null ou não.
+         */
+        return is_object($obj) ? $obj : new CorrentistaModel();
     }
-
-
-    /**
-     * Remove um registro da tabela pessoa do banco de dados.
-     * Note que o método exige um parâmetro $id do tipo inteiro.
-     */
-    /*public function delete(int $id)
-    {
-        $sql = "UPDATE Reclamacao SET ativo='N' WHERE id = ? ";
-
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
-        $stmt->execute();
-    }*/
 }

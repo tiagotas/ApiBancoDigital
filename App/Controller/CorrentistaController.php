@@ -7,16 +7,28 @@ use Exception;
 
 class CorrentistaController extends Controller
 {
+    /**
+     * Responsável por processar o login do Correntista.
+     */
     public static function login()
     {
         try
         {
-            // Transformando os dados da entrada enviada do app em
-            // JSON para um objeto em PHP.
+            /**
+             * Obtendo os dados enviados por json via C#
+             */
             $data = json_decode(file_get_contents('php://input'));
 
+            /**
+             * Criando o model
+             */
             $model = new CorrentistaModel();
 
+            /**
+             * Realizando o login com os dados digitados na interface do App
+             * Exemplo de saída que poderá ser vista no Console do Visual Studio 2022:
+             * {"rows":null,"id":"6","nome":"Giovani","email":"giovani@teste.com","cpf":"123456789","data_nascimento":"2005-02-08T00:00:00","senha":"123"}
+             */
             parent::getResponseAsJSON($model->getByCpfAndSenha($data->Cpf, $data->Senha)); 
 
         } catch(Exception $e) {
@@ -33,11 +45,19 @@ class CorrentistaController extends Controller
     {
         try
         {
+            /**
+             * Obtendo os dados enviados por json via C#
+             */
             $data = json_decode(file_get_contents('php://input'));
 
+            /**
+             * Criando o model
+             */
             $model = new CorrentistaModel();
 
-            // Copiando os valores de $data para $model
+            /**
+             * Copiando os valores de $data para $model dinâmicamente
+             */ 
             foreach (get_object_vars($data) as $key => $value) 
             {
                 $prop_letra_minuscula = strtolower($key);
@@ -45,6 +65,11 @@ class CorrentistaController extends Controller
                 $model->$prop_letra_minuscula = $value;
             }
 
+            /**
+             * Salvando o novo correntista e definindo a saída.
+             * Exemplo de saída que poderá ser vista no Console do Visual Studio 2022:
+             * {"rows":null,"id":"6","nome":"Giovani","email":"giovani@teste.com","cpf":"123456789","data_nascimento":"2005-02-08T00:00:00","senha":"123"}
+             */
             parent::getResponseAsJSON($model->save()); 
 
         } catch(Exception $e) {
