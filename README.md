@@ -19,7 +19,7 @@ No App em Xamarin/Maui altere o local de conexão para:
    
    EXEMPLO de como ficará com a alteração
    
-   `<?xml version="1.0" encoding="utf-8"?>
+`<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.appbancodigital">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
     <application android:usesCleartextTraffic="true" android:label="AppBancoDigital.Android" android:theme="@style/MainTheme"></application>
