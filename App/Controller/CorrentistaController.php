@@ -55,6 +55,8 @@ class CorrentistaController extends Controller
              */
             $model = new CorrentistaModel();
 
+            // $model->nome = $data->nome;
+
             /**
              * Copiando os valores de $data para $model dinâmicamente
              */ 
