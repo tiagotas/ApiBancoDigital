@@ -2,6 +2,7 @@
 
 use App\Controller\
 {
+    ChavePixController,
     CorrentistaController,
     ContaController,
     TransacaoController,
@@ -64,10 +65,28 @@ switch ($url)
      * URL: https://bancodigital.tiago.blog.br/cliente/salvar
      * URL Local: http://0.0.0.0:8000/cliente/salvar
      */
-    // Exemplo de Acesso: https://bancodigital.tiago.blog.br/conta/fechar
     case '/conta/fechar':
         ContaController::fechar();
     break;
+
+    /**
+     * Método: POST
+     * URL: https://bancodigital.tiago.blog.br/pix/chave/salvar
+     * URL Local: http://0.0.0.0:8000/pix/chave/salvar
+     */
+    case '/pix/chave/salvar':
+        ChavePixController::salvar();
+    break;
+
+    /**
+     * Método: POST
+     * URL: https://bancodigital.tiago.blog.br/pix/chave/remover'
+     * URL Local: http://0.0.0.0:8000/pix/chave/remover'
+     */
+    case '/pix/chave/remover':
+        ChavePixController::remover();
+    break;
+
 
     /**
      * Método: POST
