@@ -74,6 +74,15 @@ switch ($url)
      * URL: https://bancodigital.tiago.blog.br/pix/chave/salvar
      * URL Local: http://0.0.0.0:8000/pix/chave/salvar
      */
+    case '/pix/chave/listar':
+        ChavePixController::listar();
+    break;
+
+    /**
+     * Método: POST
+     * URL: https://bancodigital.tiago.blog.br/pix/chave/salvar
+     * URL Local: http://0.0.0.0:8000/pix/chave/salvar
+     */
     case '/pix/chave/salvar':
         ChavePixController::salvar();
     break;

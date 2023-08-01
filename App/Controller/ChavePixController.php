@@ -42,6 +42,30 @@ class ChavePixController extends Controller
     }
 
     /**
+     * Salva uma Chave Pix
+     */
+    public static function listar() : void
+    {
+        try
+        {
+            $data = json_decode(file_get_contents('php://input'));
+
+            $model = new ChavePixModel();
+
+            /**
+             * Salvando o novo correntista e definindo a saída.
+             * Veja como ficou na Guia "Saída" do Visual Studio 2022
+             */
+            parent::getResponseAsJSON($model->getAllRows($data->id_correntista)); 
+
+        } catch(Exception $e) {
+            
+            parent::LogError($e);
+            parent::getExceptionAsJSON($e);
+        }
+    }
+
+    /**
      * Remove uma Chave Pix
      */
     public static function remover() : void

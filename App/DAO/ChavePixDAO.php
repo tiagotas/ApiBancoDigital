@@ -63,12 +63,15 @@ class ChavePixDAO extends DAO
     /**
      * Método que retorna todas os registros da tabela pessoa no banco de dados.
      */
-    public function select(int $id_conta)
+    public function select(int $id_correntista)
     {
-        $sql = "SELECT * FROM chave_pix WHERE id_conta = ? ";
+        $sql = "SELECT cp.*
+                FROM chave_pix cp
+                JOIN conta c ON (c.id_conta = cp.id_conta)
+                WHERE c.id_correntista = ? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id_conta);
+        $stmt->bindValue(1, $id_correntista);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_CLASS);        
